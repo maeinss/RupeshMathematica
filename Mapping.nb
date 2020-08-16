@@ -1,0 +1,163 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5600,        155]
+NotebookOptionsPosition[      4711,        132]
+NotebookOutlinePosition[      5111,        148]
+CellTagsIndexPosition[      5068,        145]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}]], "Input",
+ CellLabel->"In[33]:=",ExpressionUUID->"82afb5e2-b481-4491-b912-20066b2b4922"],
+
+Cell[TextData[StyleBox["Q. I have two matrix A and B of equal dimensions see \
+below.In A matrix I have the variables a, b, c, d which have direct \
+correspondence with matrix B element by each row.In other words, for first \
+row {a, b, c, d} we have {2, 9, 6, 7}, further for each element in both row a \
+= 2, b = 9, c = 6 and d = 7 similarly for other rows in both matrix.A = {{a, \
+b, c, d}, {d, c, b, a}, {a, c, b, d}};\nB = {{2, 9, 6, 7}, {11, 3, 5, 12}, \
+{12, 4, 1, 4}};\nAfter mapping these two matrix, I want to perform simple \
+mathematical operations (addition and subtraction).For example, for first row \
+: x1 = a - d = 2 - 7 = -5\ny1 = b - a = 9 - 2 = 7\nsimilarly fir second row, \
+x2 = a - d = 12 - 11 = 1\ny2 = b - a = 5 - 12 = -7\nI can map these two \
+matrix by Map[A, B], but I don\.b4t know how to map each element of both \
+matrix.Is there a way we can map each element and then by using loop we \
+evaluate a - d, b - a for each row?", "Abstract"]], "CodeText",
+ CellChangeTimes->{{3.8065745147553463`*^9, 3.8065745147594895`*^9}, {
+  3.8065745681522474`*^9, 3.8065745864136486`*^9}, {3.8065746775171695`*^9, 
+  3.806574712924746*^9}},ExpressionUUID->"9dd510d6-b3f8-4bb1-9161-\
+5340fb5ffbf4"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{3.806574821567983*^9},
+ CellLabel->"In[34]:=",ExpressionUUID->"a8520967-e7c7-4a9b-aa02-d224259a9fcc"],
+
+Cell[CellGroupData[{
+
+Cell["Answer :", "Section",
+ CellChangeTimes->{{3.806574717918437*^9, 
+  3.80657476750863*^9}},ExpressionUUID->"6fe27000-99d8-4299-bd23-\
+56f2c9fd322b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"A", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"a", ",", "b", ",", "c", ",", "d"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"d", ",", "c", ",", "b", ",", "a"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"a", ",", "c", ",", "b", ",", "d"}], "}"}]}], "}"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"B", "=", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"2", ",", "9", ",", "6", ",", "7"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"11", ",", "3", ",", "5", ",", "12"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"12", ",", "4", ",", "1", ",", "4"}], "}"}]}], "}"}]}], ";"}], 
+  "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"NN", "=", 
+   RowBox[{"Length", "[", "A", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"data", "=", 
+   RowBox[{"{", "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"i", "=", "1"}], ",", 
+    RowBox[{"i", "\[LessEqual]", "NN"}], ",", 
+    RowBox[{
+     RowBox[{"a", "=."}], ";", 
+     RowBox[{"b", "=."}], ";", 
+     RowBox[{"c", "=."}], ";", 
+     RowBox[{"d", "=."}], ";", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Evaluate", "[", 
+       RowBox[{"A", "[", 
+        RowBox[{"[", "i", "]"}], "]"}], "]"}], "=", 
+      RowBox[{"B", "[", 
+       RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"values", "=", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"data", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"a", "-", "d"}], ",", 
+          RowBox[{"b", "-", "a"}]}], "}"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"i", "++"}]}]}], "]"}], ";"}], "\n", "values"}], "Input",
+ CellChangeTimes->{{3.806574765094016*^9, 3.8065747650965853`*^9}, {
+  3.8065748105990615`*^9, 3.8065748109412413`*^9}},
+ CellLabel->"In[35]:=",ExpressionUUID->"b6292327-f440-4ad7-b24b-8229db76e629"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "5"}], ",", "7"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", 
+     RowBox[{"-", "7"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"8", ",", 
+     RowBox[{"-", "11"}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.8065747713257055`*^9, {3.8065748076194386`*^9, 3.8065748252085514`*^9}},
+ CellLabel->"Out[40]=",ExpressionUUID->"764d2306-84af-4537-8b5a-9e0a2e96d5b7"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{759, 813},
+WindowMargins->{{572, Automatic}, {Automatic, 84}},
+FrontEndVersion->"12.1 for Microsoft Windows (64-bit) (March 18, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"68887a26-db64-40a0-9180-fa12cfd44e4c"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 155, 2, 28, "Input",ExpressionUUID->"82afb5e2-b481-4491-b912-20066b2b4922"],
+Cell[716, 24, 1214, 16, 279, "CodeText",ExpressionUUID->"9dd510d6-b3f8-4bb1-9161-5340fb5ffbf4"],
+Cell[1933, 42, 147, 2, 28, "Input",ExpressionUUID->"a8520967-e7c7-4a9b-aa02-d224259a9fcc"],
+Cell[CellGroupData[{
+Cell[2105, 48, 152, 3, 67, "Section",ExpressionUUID->"6fe27000-99d8-4299-bd23-56f2c9fd322b"],
+Cell[CellGroupData[{
+Cell[2282, 55, 1928, 57, 200, "Input",ExpressionUUID->"b6292327-f440-4ad7-b24b-8229db76e629"],
+Cell[4213, 114, 470, 14, 32, "Output",ExpressionUUID->"764d2306-84af-4537-8b5a-9e0a2e96d5b7"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
